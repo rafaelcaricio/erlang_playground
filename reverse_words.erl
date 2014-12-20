@@ -20,4 +20,4 @@ join([Element|List], Pattern) -> [[Element|Pattern]|join(List, Pattern)].
 
 main(_) ->
   Result = join(reverse(split(reverse("that's something very interesting"), $ )), " "),
-  io:format(Result).
+  io:format("~s~n", [Result]).
