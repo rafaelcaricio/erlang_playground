@@ -2,14 +2,14 @@
 %% -*- erlang -*-
 
 reverse([]) -> [];
-reverse([E|L]) -> reverse(L) ++ [E].
+reverse([Element|List]) -> reverse(List) ++ [Element].
 
 split([], _) -> [];
-split(List, E) -> split(List, E, [], []).
+split(List, Pattern) -> split(List, Pattern, []).
 
-split([], _, Res, Current) -> Res ++ [Current];
-split([E|L], E, Res, Current) -> Res ++ [Current] ++ split(L, E);
-split([E|L], P, Res, Current) -> split(L, P, Res, Current ++ [E]).
+split([], _, Current) -> [Current];
+split([Pattern|List], Pattern, Current) -> [Current] ++ split(List, Pattern);
+split([Element|List], Pattern, Current) -> split(List, Pattern, Current ++ [Element]).
 
 join([], _) -> [];
 join([Element|[]], _) -> Element;
