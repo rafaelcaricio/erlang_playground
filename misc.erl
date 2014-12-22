@@ -8,8 +8,10 @@ member(H, [H|_]) -> true;
 member(H, [_|T]) -> member(H, T);
 member(_, []) -> false.
 
-len([]) -> 0;
-len([_|L]) -> 1 + len(L).
+len(Xs) -> len(Xs, 0).
+
+len([], Acc) -> Acc;
+len([_|Xs], Acc) -> len(Xs, Acc + 1).
 
 index_of(_, []) -> -1;
 index_of(E, L) -> index_of(E, L, 0).
